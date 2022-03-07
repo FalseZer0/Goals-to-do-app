@@ -5,9 +5,11 @@ const {getGoals,setGoal,updateGoal,deleteGoal} = require('../controllers/goalCon
 //to replace routes with similar/same endpoints we can rewrite this
 // router.get('/',getGoals);
 // router.post('/',setGoal);
-router.route('/').get(getGoals).post(setGoal);
+const {protect} = require('../middleware/authMiddleware');
 
-router.route('/:id').put(updateGoal).delete(deleteGoal);
+router.route('/').get(protect,getGoals).post(protect,setGoal);
+
+router.route('/:id').put(protect,updateGoal).delete(protect,deleteGoal);
 
 //.get() handles incoming get requests
 //.send() sends a text message
