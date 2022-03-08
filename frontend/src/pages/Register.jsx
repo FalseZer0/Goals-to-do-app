@@ -30,15 +30,18 @@ function Register() {
     }
     dispatch(reset());
   }, [user, navigate, dispatch, isError, isSuccess, message]);
+
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+
+
   const onSubmit = (e) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
     } else {
@@ -50,9 +53,12 @@ function Register() {
       dispatch(register(userData));
     }
   };
+
+
   if (isLoading) {
     return <Spinner />;
   }
+  
   return (
     <>
       <section className="heading">
