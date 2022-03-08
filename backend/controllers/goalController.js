@@ -30,7 +30,8 @@ const setGoal = asyncHandler(async (req,res)=>{
 //@access   Private
 const updateGoal = asyncHandler(async (req,res)=>{
     //below 2 statements check if such a goal exists
-    const user = await User.findById(req.user.id);
+    // const user = await User.findById(req.user.id);
+    const user = req.user;
     //check for user
     if(!user){
         res.status(401);
@@ -54,7 +55,8 @@ const updateGoal = asyncHandler(async (req,res)=>{
 //@route    DELETE /api/goalRoutes/:id
 //@access   Private
 const deleteGoal = asyncHandler(async (req,res)=>{
-    const user = await User.findById(req.user.id);
+    // const user = await User.findById(req.user.id);
+    const user = req.user;
     //check for user
     if(!user){
         res.status(401);
